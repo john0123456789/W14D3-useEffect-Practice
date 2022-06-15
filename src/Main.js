@@ -18,14 +18,14 @@ const Main = () => {
 
   useEffect(() => {
     const myInterval = setInterval(() => {
-      return () => {
-        console.log(
-          `UseEffect3 cleanup ran.\nsetInterval number ${count} is being cleared out`
-        );
-        clearInterval(myInterval);
-        console.log(`UseEffect3 with interval number ${count} is running`);
-      };
+      console.log(`UseEffect3 with interval number ${count} is running`);
     }, 1000);
+    return () => {
+      console.log(
+        `UseEffect3 cleanup ran.\nsetInterval number ${count} is being cleared out`
+      );
+      clearInterval(myInterval);
+    };
   }, [count]);
 
   return (
